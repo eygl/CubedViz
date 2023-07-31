@@ -1,0 +1,149 @@
+connectors:
+  X1:
+    type: E2008 
+    subtype: C8
+    pn: 3768010C1 
+    pincount: 8 
+    pins: [R4-30, R5-85, R5-86, R4-86, R4-87, R4-85 , R5-87A, R5-30]
+    pinlabels: [B06-009-DBA, B06-011-HLB, B06-012-BDA, B06-014-NAA, B06-125-AAA, B06-125-ACC, B06-125-ACD, B06-125-ADF]
+    show_pincount: false
+   
+  X2:
+    type: E2910
+    subtype: ZVR ADAPTER
+    pinlabels: [B06-009-DBA]
+    pn: 3613769C1
+    pins: [9]
+    show_pincount: false
+  X3:
+    type: E2902
+    subtype: GND ADAPTER
+    pinlabels: [B06-011-DBA]
+    pn: 3768015C1
+    pins: [G]
+    show_pincount: false
+  X4:
+    type: E2009
+    subtype: C9
+    pinlabels: [B06-012-BDA]
+    pn: 3768015C1
+    pins: [23]
+    show_pincount: false
+  X5:
+    type: E2003
+    subtype: C3
+    pinlabels: [B06-014-NAA]
+    pn: 3768015C1
+    pins: [21]
+    show_pincount: false
+  X6:
+    type: E985B
+    subtype: IP/ELECTRICAL PANEL
+    pinlabels: [B06-125-AAA]
+    pn: 4134137C1
+    pins: [44]
+    show_pincount: false
+  X7:
+    type: E2006
+    subtype: C6
+    pins: [2, 6]
+    pn: 3768015C1
+    pinlabels: [B06-125-ABA,B06-125-ACA]
+    show_pincount: false
+  X9:
+    type: S021
+    subtype: SPLICE
+    pincount: 3
+    pins: [1,2,3]
+    pinlabels: [B06-125-ACA, B06-125-ACC, B06-125-ACD]
+    show_pincount: false
+  X8:
+    type: E2940
+    subtype: EMERGENCY EXIT SPLICE PACK
+    pins: [D]
+    pn: 3543729C1
+    pinlabels: [B06-125-ABA]
+    show_pincount: false
+  X10:
+    type: E860A
+    subtype: ELECTRICAL PANEL/LEFT BODY
+    pins: [B7]
+    pinlabels: [B06-125-ADF]
+    show_pincount: false
+  X11:
+    type: E865A
+    subtype: ELECTRICAL PANEL/LEFT BODY
+    pins: [14]
+    pinlabels: [B06-125-AVA]
+    show_pincount: false
+
+  X12:
+    type: E2001
+    subtype: C1
+    pins: [R2-85]
+    pinlabels: [B06-125-AVE]
+    show_pincount: false
+  X13:
+    type: S075
+    subtype: SPLICE
+    pins: [1,2]
+    pinlabels: [ B06-125-AVA , B06-125-AVE]
+    show_pincount: false
+
+cables:         
+  W1:
+    color_code: IEC # auto-color wires based on a standard
+    wirecount: 12 # need to specify number of wires explicitly when using a color code
+    pn: 6743263F91
+    type: POST TRIP KEY OFF W/ ALARM DISABLED
+
+connections:
+  -
+    - X2: [9]
+    - W1: [1]
+    - X1: [R4-30]
+  -
+    - X3: [G]
+    - W1: [2]
+    - X1: [R5-85]
+  -
+    - X4: [23]
+    - W1: [3]
+    - X1: [R5-86]
+  -
+    - X5: [21]
+    - W1: [4]
+    - X1: [R4-86]
+  -
+    - X6: [44]
+    - W1: [5]
+    - X1: [R4-87]
+
+  -
+    - X7: [2]
+    - W1: [6]
+    - X8: [D]
+  -
+    - X7: [6]
+    - W1: [7]
+    - X9: [1]
+  -
+    - X9: [2]
+    - W1: [8]
+    - X1: [R4-85]
+  -
+    - X9: [3]
+    - W1: [9]
+    - X1: [R5-87A]
+  -
+    - X10: [B7]
+    - W1: [10]
+    - X1: [R5-30]
+  - 
+    - X11: [14]
+    - W1: [11]
+    - X13: [1]
+  - 
+    - X12: [R2-85]
+    - W1: [12]
+    - X13: [2]

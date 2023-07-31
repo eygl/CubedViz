@@ -125,16 +125,16 @@ class Harness:
 
             html = []
 
-            rows = [[f'{html_bgcolor(connector.bgcolor_title)}{remove_links(connector.name)}'
-                        if connector.show_name else None],
-                    [pn_info_string(HEADER_PN, None, remove_links(connector.pn)),
-                     html_line_breaks(pn_info_string(HEADER_MPN, connector.manufacturer, connector.mpn)),
-                     html_line_breaks(pn_info_string(HEADER_SPN, connector.supplier, connector.spn))],
+            rows = [# [f'{html_bgcolor(connector.bgcolor_title)}{remove_links(connector.name)}'
+                    #    if connector.show_name else None],
+                    #  html_line_breaks(pn_info_string(HEADER_MPN, connector.manufacturer, connector.mpn)),
+                    [html_line_breaks(pn_info_string(HEADER_SPN, connector.supplier, connector.spn))],
                     [html_line_breaks(connector.type),
-                     html_line_breaks(connector.subtype),
                      f'{connector.pincount}-pin' if connector.show_pincount else None,
                      translate_color(connector.color, self.options.color_mode) if connector.color else None,
                      html_colorbar(connector.color)],
+                     [html_line_breaks(connector.subtype)],
+                    [pn_info_string(HEADER_PN, None, remove_links(connector.pn))],
                     '<!-- connector table -->' if connector.style != 'simple' else None,
                     [html_image(connector.image)],
                     [html_caption(connector.image)]]
@@ -210,9 +210,7 @@ class Harness:
                 elif cable.gauge_unit.upper() == 'AWG':
                     awg_fmt = f' ({mm2_equiv(cable.gauge)} mm\u00B2)'
 
-            rows = [[f'{html_bgcolor(cable.bgcolor_title)}{remove_links(cable.name)}'
-                        if cable.show_name else None],
-                    [pn_info_string(HEADER_PN, None,
+            rows = [[pn_info_string(HEADER_PN, None,
                         remove_links(cable.pn)) if not isinstance(cable.pn, list) else None,
                      html_line_breaks(pn_info_string(HEADER_MPN,
                         cable.manufacturer if not isinstance(cable.manufacturer, list) else None,
@@ -220,8 +218,8 @@ class Harness:
                      html_line_breaks(pn_info_string(HEADER_SPN,
                         cable.supplier if not isinstance(cable.supplier, list) else None,
                         cable.spn if not isinstance(cable.spn, list) else None))],
-                    [html_line_breaks(cable.type),
-                     f'{cable.wirecount}x' if cable.show_wirecount else None,
+                    [html_line_breaks(cable.type)],
+                    [f'{cable.wirecount}x' if cable.show_wirecount else None,
                      f'{cable.gauge} {cable.gauge_unit}{awg_fmt}' if cable.gauge else None,
                      '+ S' if cable.shield else None,
                      f'{cable.length} {cable.length_unit}' if cable.length > 0 else None,
